@@ -78,5 +78,8 @@ Use `scripts/build-and-test.sh` to build the rock with
 [LuaRocks](https://luarocks.org) and run the tests across the Lua versions
 installed on the machine.
 
-For a local install, use
-`luarocks --lua-version=5.x make rockspecs/timeutil-0.1.0-1.rockspec`.
+For local development, run:
+
+```sh
+luarocks --lua-version=5.x make rockspecs/timeutil-scm-1.rockspec
+```
