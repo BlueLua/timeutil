@@ -6,8 +6,10 @@ blocking sleep.
 The module includes POSIX, Windows, and macOS-specific code paths, and is
 intended for Lua 5.1, Lua 5.2, Lua 5.3, Lua 5.4, Lua 5.5, and LuaJIT.
 
-> **Warning** Windows and macOS support is not fully verified. The local test
-> suite runs on Linux/POSIX.
+> [!WARNING]
+>
+> Windows and macOS support is not fully verified. The local test suite runs on
+> Linux/POSIX.
 
 ## Contents
 
