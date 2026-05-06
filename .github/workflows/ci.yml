@@ -69,7 +69,7 @@ jobs:
 
     defaults:
       run:
-        shell: bash
+        shell: pwsh
 
     steps:
       - uses: actions/checkout@v6
