@@ -5,7 +5,7 @@ set -eu
 
 ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 BUILD_ROOT=${BUILD_ROOT:-"$ROOT/build"}
-ROCKSPEC="$ROOT/rockspecs/timeutil-0.1.0-1.rockspec"
+ROCKSPEC="$ROOT/rockspecs/timeutil-scm-1.rockspec"
 
 run_for() {
   interp=$1
