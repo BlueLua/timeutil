@@ -21,10 +21,10 @@ luarocks install timeutil
 ## API
 
 ```lua
-local timeutil = require("timeutil")
-local start = timeutil.mono()
-timeutil.sleep(0.05)
-print(timeutil.now() - start)
+local time = require("timeutil")
+local start = time.mono()
+time.sleep(0.05)
+print(time.now() - start)
 ```
 
 ### Functions
