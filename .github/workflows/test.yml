@@ -1,4 +1,4 @@
-name: CI
+name: Test
 
 on:
   push:
@@ -7,14 +7,14 @@ on:
       - "tests/**"
       - "scripts/**"
       - "rockspecs/**"
-      - ".github/workflows/ci.yml"
+      - ".github/workflows/test.yml"
   pull_request:
     paths:
       - "src/**"
       - "tests/**"
       - "scripts/**"
       - "rockspecs/**"
-      - ".github/workflows/ci.yml"
+      - ".github/workflows/test.yml"
 
 jobs:
   test-unix:
