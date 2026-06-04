@@ -1,80 +1,52 @@
-# timeutil ⏳
+# timeutil
 
-`timeutil` is a C-backed Lua module for wall-clock time, monotonic time, and
-blocking sleep.
+<p style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+  <a href="https://luarocks.org/modules/BlueLua/timeutil">
+    <img src="https://img.shields.io/luarocks/v/BlueLua/timeutil?color=blue&style=flat-square" alt="LuaRocks">
+  </a>
+  <a href="https://github.com/BlueLua/timeutil/actions/workflows/test.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/BlueLua/timeutil/test.yml?style=flat-square" alt="Test Status">
+  </a>
+  <img src="https://img.shields.io/badge/lua-5.1%20%7C%205.2%20%7C%205.3%20%7C%205.4%20%7C%205.5%20%7C%20LuaJIT-blue?style=flat-square" alt="Lua Versions">
+  <img src="https://img.shields.io/badge/platform-linux%20%7C%20macos%20%7C%20windows-blue?style=flat-square" alt="Platform">
+  <a href="https://github.com/BlueLua/timeutil/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License">
+  </a>
+</p>
 
-The module includes POSIX, Windows, and macOS-specific code paths, and is
-intended for Lua 5.1, Lua 5.2, Lua 5.3, Lua 5.4, Lua 5.5, and LuaJIT.
+`timeutil` is a high-performance C-backed Lua module providing precision
+wall-clock time, monotonic time, and sleep utilities.
 
-## Contents
+Read the [documentation](https://bluelua.github.io/timeutil) to get started.
 
-- [Install](#install)
-- [API](#api)
-- [Development](#development)
+## ✨ Features
 
-## Install
+- **Monotonic Clock**: Measure precise intervals unaffected by [NTP] syncs or
+  system clock shifts.
+- **Wall-Clock Time**: Fetch system real-time with sub-microsecond precision.
+- **Fractional Sleep**: Put the execution thread to sleep for fractional seconds
+  without high CPU utilization.
+- **Multiple Lua Versions**: Compatible with LuaJIT, Lua 5.1, 5.2, 5.3, 5.4, and
+  5.5.
+
+## 📦 Installation
 
 ```sh
 luarocks install timeutil
 ```
 
-## API
+## 🚀 Usage
 
 ```lua
-local time = require("timeutil")
+local time = require "timeutil"
+
+-- Measure precise elapsed time
 local start = time.mono()
-time.sleep(0.05)
-print(time.now() - start)
+time.sleep(0.05) -- sleep for 50ms
+local elapsed = time.mono() - start
+
+print(string.format("Elapsed: %.6f seconds", elapsed))
+print(string.format("Current Unix timestamp: %.6f", time.now()))
 ```
 
-### Functions
-
-#### `timeutil.now()`
-
-Returns Unix wall-clock time in seconds.
-
-```lua
-local time = require("timeutil")
-local now = time.now()
-local seconds = math.floor(now)
-local ms = math.floor((now - seconds) * 1000)
-local dt = string.format("%s.%03d", os.date("%Y-%m-%d %H:%M:%S", seconds), ms)
-print(dt) --> YYYY-MM-DD HH:mm:ss.SSS
-```
-
-#### `timeutil.mono()`
-
-Returns monotonic elapsed time in seconds.
-
-```lua
-local time = require("timeutil")
-local monotime = time.mono
-
-local start = monotime()
-time.sleep(0.5)
-local stop = monotime()
-
-local elapsed_ms = math.floor((stop - start) * 1000)
-print(elapsed_ms.."ms") --> 500ms
-```
-
-#### `timeutil.sleep(seconds)`
-
-Blocks for a finite non-negative duration.
-
-```lua
-local time = require("timeutil")
-time.sleep(1.5) -- sleep for 1.5 seconds
-```
-
-## Development
-
-Use `scripts/build-and-test.sh` to build the rock with
-[LuaRocks](https://luarocks.org) and run the tests across the Lua versions
-installed on the machine.
-
-For local development, run:
-
-```sh
-luarocks --lua-version=5.x make rockspecs/timeutil-scm-1.rockspec
-```
+[NTP]: https://en.wikipedia.org/wiki/Network_Time_Protocol
