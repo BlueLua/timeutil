@@ -1,18 +1,10 @@
 # timeutil
 
-<p style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
-  <a href="https://luarocks.org/modules/BlueLua/timeutil">
-    <img src="https://img.shields.io/luarocks/v/BlueLua/timeutil?color=blue&style=flat-square" alt="LuaRocks">
-  </a>
-  <a href="https://github.com/BlueLua/timeutil/actions/workflows/test.yml">
-    <img src="https://img.shields.io/github/actions/workflow/status/BlueLua/timeutil/test.yml?style=flat-square" alt="Test Status">
-  </a>
-  <img src="https://img.shields.io/badge/lua-5.1%20%7C%205.2%20%7C%205.3%20%7C%205.4%20%7C%205.5%20%7C%20LuaJIT-blue?style=flat-square" alt="Lua Versions">
-  <img src="https://img.shields.io/badge/platform-linux%20%7C%20macos%20%7C%20windows-blue?style=flat-square" alt="Platform">
-  <a href="https://github.com/BlueLua/timeutil/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License">
-  </a>
-</p>
+[![LuaRocks](https://img.shields.io/luarocks/v/BlueLua/timeutil?color=blue&style=flat-square)](https://luarocks.org/modules/BlueLua/timeutil)
+[![Test Status](https://img.shields.io/github/actions/workflow/status/BlueLua/timeutil/test.yml?style=flat-square)](https://github.com/BlueLua/timeutil/actions/workflows/test.yml)
+![Lua Versions](https://img.shields.io/badge/lua-5.1%20%7C%205.2%20%7C%205.3%20%7C%205.4%20%7C%205.5%20%7C%20LuaJIT-blue?style=flat-square)
+![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macos%20%7C%20windows-blue?style=flat-square)
+[![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](https://github.com/BlueLua/timeutil/blob/main/LICENSE)
 
 `timeutil` is a high-performance C-backed Lua module providing precision
 wall-clock time, monotonic time, and sleep utilities.
