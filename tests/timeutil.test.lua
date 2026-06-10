@@ -1,12 +1,13 @@
 local time = require("timeutil")
 
--- Export surface.
-
-local expected = { now = true, mono = true, sleep = true }
+local expected = { now = "function", mono = "function", sleep = "function", _VERSION = "string" }
 for name, value in pairs(time) do
-  assert(expected[name], "unexpected export: " .. name)
-  assert(type(value) == "function", "export is not a function: " .. name)
+  local expected_type = expected[name]
+  assert(expected_type, "unexpected export: " .. name)
+  assert(type(value) == expected_type, "export is not a " .. expected_type .. ": " .. name)
 end
+
+assert(time._VERSION == "timeutil 0.0.0", "unexpected version: " .. tostring(time._VERSION))
 
 -- Return types.
 

@@ -1,5 +1,7 @@
 ---@meta timeutil
 
+local version = "timeutil 0.0.0" -- x-release-please-version
+
 ---
 ---Wall-clock time, monotonic time, and native sleep utilities.
 ---
@@ -11,7 +13,9 @@
 ---```
 ---
 ---@class timeutil
-local M = {}
+local M = {
+  _VERSION = version,
+}
 
 ---
 ---Returns wall-clock Unix time in seconds.
