@@ -24,13 +24,14 @@ run_for() {
 
   printf 'test %s\n' "$interp"
   (
+    cd "$ROOT"
     eval "$(luarocks --tree "$out_dir" --lua-version="$lua_version" path --no-bin)"
-    "$interp" "$ROOT/tests/timeutil.test.lua"
+    busted --lua="$interp"
   )
 }
 
-run_for lua5.1 5.1
 run_for luajit 5.1
+run_for lua5.1 5.1
 run_for lua5.2 5.2
 run_for lua5.3 5.3
 run_for lua5.4 5.4
