@@ -1,47 +1,82 @@
-local time = require("timeutil")
+---@diagnostic disable
 
-local expected = { now = "function", mono = "function", sleep = "function", _VERSION = "string" }
-for name, value in pairs(time) do
-  local expected_type = expected[name]
-  assert(expected_type, "unexpected export: " .. name)
-  assert(type(value) == expected_type, "export is not a " .. expected_type .. ": " .. name)
-end
+describe("timeutil", function()
+  local time = require("timeutil")
 
-assert(time._VERSION == "timeutil 0.0.0", "unexpected version: " .. tostring(time._VERSION))
+  describe("exports", function()
+    it("should export the correct functions and types", function()
+      local expected = {
+        now = "function",
+        mono = "function",
+        sleep = "function",
+        _VERSION = "string",
+      }
+      for name, value in pairs(time) do
+        local expected_type = expected[name]
+        assert.Truthy(expected_type, "unexpected export: " .. name)
+        assert.Equal(expected_type, type(value), "export is not a " .. expected_type .. ": " .. name)
+      end
+    end)
 
--- Return types.
+    it("should have the correct version string", function()
+      assert.String(time._VERSION)
+    end)
+  end)
 
-local now = time.now
-local mono = time.mono
-local sleep = time.sleep
+  describe("return types", function()
+    it("now() should return a number", function()
+      assert.Number(time.now())
+    end)
 
-assert(type(now()) == "number", "now() must return a number")
-assert(type(mono()) == "number", "mono() must return a number")
-assert(sleep(0) == nil, "sleep() must return nil")
+    it("mono() should return a number", function()
+      assert.Number(time.mono())
+    end)
 
--- Sleep duration.
+    it("sleep(0) should return nil", function()
+      assert.Nil(time.sleep(0))
+    end)
+  end)
 
-local before_sleep = mono()
-sleep(0.05)
-local after_sleep = mono()
-local slept = after_sleep - before_sleep
+  describe("sleep duration", function()
+    it("should sleep for approximately the requested duration", function()
+      local before_sleep = time.mono()
+      time.sleep(0.05)
+      local after_sleep = time.mono()
+      local slept = after_sleep - before_sleep
 
-assert(slept >= 0.04, "sleep(0.05) returned too early: " .. slept)
-assert(slept < 2.0, "sleep(0.05) took unexpectedly long: " .. slept)
+      assert.True(slept >= 0.04)
+      assert.True(slept < 2.0)
+    end)
+  end)
 
--- Clock monotonicity.
+  describe("clock monotonicity", function()
+    it("now() and mono() should not move backwards", function()
+      local now_before = time.now()
+      local mono_before = time.mono()
+      time.sleep(0.05)
 
-local now_before = now()
-local mono_before = mono()
-sleep(0.05)
+      assert.True(time.now() >= now_before)
+      assert.True(time.mono() >= mono_before)
+    end)
+  end)
 
-assert(now() >= now_before, "now() moved backwards")
-assert(mono() >= mono_before, "mono() moved backwards")
+  describe("input validation", function()
+    it("sleep() should require a duration", function()
+      assert.has_error(function()
+        time.sleep()
+      end)
+    end)
 
--- Input validation.
+    it("sleep() should reject negative durations", function()
+      assert.has_error(function()
+        time.sleep(-0.001)
+      end)
+    end)
 
-assert(not pcall(sleep), "sleep() must require a duration")
-assert(not pcall(sleep, -0.001), "sleep() must reject negative durations")
-assert(not pcall(sleep, 0 / 0), "sleep() must reject NaN")
-
-print("timeutil tests passed")
+    it("sleep() should reject NaN", function()
+      assert.has_error(function()
+        time.sleep(0 / 0)
+      end)
+    end)
+  end)
+end)
