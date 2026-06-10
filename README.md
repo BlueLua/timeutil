@@ -1,7 +1,7 @@
 # timeutil
 
 [![LuaRocks](https://img.shields.io/luarocks/v/BlueLua/timeutil?color=blue&style=flat-square)](https://luarocks.org/modules/BlueLua/timeutil)
-[![Test Status](https://img.shields.io/github/actions/workflow/status/BlueLua/timeutil/test.yml?style=flat-square)](https://github.com/BlueLua/timeutil/actions/workflows/test.yml)
+[![CI Status](https://img.shields.io/github/actions/workflow/status/BlueLua/timeutil/ci.yml?label=CI&style=flat-square)](https://github.com/BlueLua/timeutil/actions/workflows/ci.yml)
 ![Lua Versions](https://img.shields.io/badge/lua-5.1%20%7C%205.2%20%7C%205.3%20%7C%205.4%20%7C%205.5%20%7C%20LuaJIT-blue?style=flat-square)
 ![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macos%20%7C%20windows-blue?style=flat-square)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](https://github.com/BlueLua/timeutil/blob/main/LICENSE)
@@ -17,7 +17,7 @@ Read the [documentation](https://bluelua.github.io/timeutil) to get started.
   system clock shifts.
 - **Wall-Clock Time**: Fetch system real-time with sub-microsecond precision.
 - **Fractional Sleep**: Put the execution thread to sleep for fractional seconds
-  without high CPU utilization.
+  without high CPU utilization.a
 - **Multiple Lua Versions**: Compatible with LuaJIT, Lua 5.1, 5.2, 5.3, 5.4, and
   5.5.
 
