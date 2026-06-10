@@ -270,7 +270,7 @@ extern "C"
 #endif
 TIMEUTIL_EXPORT int luaopen_timeutil(lua_State *L) {
   timeutil_newlib(L, timeutil_functions);
-  lua_pushliteral(L, "timeutil 0.0.0"); /* x-release-please-version */
+  lua_pushliteral(L, "timeutil 0.1.0"); /* x-release-please-version */
   lua_setfield(L, -2, "_VERSION");
   return 1;
 }

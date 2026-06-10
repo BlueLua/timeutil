@@ -1,6 +1,6 @@
 ---@meta timeutil
 
-local version = "timeutil 0.0.0" -- x-release-please-version
+local version = "timeutil 0.1.0" -- x-release-please-version
 
 ---
 ---Wall-clock time, monotonic time, and native sleep utilities.
