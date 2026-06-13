@@ -9,8 +9,6 @@
 `timeutil` is a high-performance C-backed Lua module providing precision
 wall-clock time, monotonic time, and sleep utilities.
 
-Read the [documentation](https://bluelua.github.io/timeutil) to get started.
-
 ## ✨ Features
 
 - **Monotonic Clock**: Measure precise intervals unaffected by [NTP] syncs or
