@@ -19,5 +19,6 @@ build = {
     timeutil = {
       sources = { "src/timeutil.c" },
     },
-  }
+    ["timeutil.types/timeutil"] = "types/timeutil.d.lua",
+  },
 }
