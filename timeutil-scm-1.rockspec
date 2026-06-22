@@ -16,8 +16,10 @@ dependencies = {
 build = {
   type = "builtin",
   modules = {
-    timeutil = {
-      sources = { "src/timeutil.c" },
+    ["timeutil"] = {
+      sources = {
+        "src/timeutil.c",
+      },
     },
     ["timeutil.types/timeutil"] = "types/timeutil.d.lua",
   },
