@@ -1,5 +1,5 @@
 {
   "package": "timeutil",
   "os": ["linux"],
-  "version-files": []
+  "version-files": ["src/timeutil.c", "types/timeutil.d.lua"]
 }
