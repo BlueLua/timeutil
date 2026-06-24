@@ -9,6 +9,8 @@
 High-performance C-backed Lua module for precision wall-clock time, monotonic
 time, and sleep utilities.
 
+Check out the [documentation] for guides and examples.
+
 ## ✨ Features
 
 - **Monotonic Clock**: Measure precise intervals unaffected by system clock
@@ -39,3 +41,5 @@ local elapsed = timeutil.mono() - start
 print(string.format("Elapsed:%.6f seconds", elapsed))
 print(string.format("Current Unix timestamp: %.6f", timeutil.now()))
 ```
+
+[documentation]: https://bluelua.github.io/timeutil
