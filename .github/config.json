@@ -1,7 +1,7 @@
 {
   "package": "timeutil",
   "os": ["linux", "macos", "windows"],
-  "version-files": ["src/timeutil.c"],
+  "version-files": ["src/timeutil.c", "types/timeutil.d.lua"],
   "desc": "High-performance C-backed Lua module for precision wall-clock time, monotonic time, and sleep utilities.",
   "usage": "-- Measure precise elapsed time\nlocal start = timeutil.mono()\ntimeutil.sleep(0.05) -- sleep for 50ms\nlocal elapsed = timeutil.mono() - start\n\nprint(string.format(\"Elapsed:%.6f seconds\", elapsed))\nprint(string.format(\"Current Unix timestamp: %.6f\", timeutil.now()))",
   "features": [
